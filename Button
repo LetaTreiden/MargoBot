@@ -1,0 +1,27 @@
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+public class Button {
+    private InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+    private InlineKeyboardButton button = new InlineKeyboardButton();
+    
+    private List<List<InlineKeyboardButton>> buttons = new ArrayList<>();
+    private List<InlineKeyboardButton> row1 = new ArrayList<>();
+    
+    public Button (String text, String callback) {
+        button.setText(text);
+        button.setCallbackData(callback);
+        row1.add(button);
+        buttons.add(row1);
+        markup.setKeyboard((buttons));
+    }
+    
+    public InlineKeyboardButton getMarkup() {
+        return markup;
+    }
+    
+}
